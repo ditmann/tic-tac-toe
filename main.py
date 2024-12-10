@@ -5,9 +5,11 @@ class Box:
 
     def boxtaken(self):
         if self.status == 0:
-            self.take(self)
+            self.take()
         else:
             print("this box is taken!")
+            boxPicked(int(input("\nwhat box?")))
+            
     
     def take(self):
         if player == True:
@@ -17,11 +19,6 @@ class Box:
             self.status = 2
             self.draw = "|O|"
 
-    def move(self,player):
-        if self.boxtaken() == False:
-            self.take(player)
-        elif self.boxtaken() == True:
-            print("velg en ny box")
 
 box1=Box()
 box2=Box()
@@ -42,31 +39,30 @@ def isGameOver():
     for boxes in boxing:
         if boxes.status !=0:
             boxtaken += 1
-    if boxtaken == 9:
+    if boxtaken >= 9:
         return True
     else:
         return False
 
 def boxPicked(number):
     if number == 1:
-        box1.boxtaken(player)
+        box1.boxtaken()
     elif number == 2:
-        box2.boxtaken(player)
+        box2.boxtaken()
     elif number == 3:
-        box3.boxtaken(player)
+        box3.boxtaken()
     elif number == 4:
-        box4.boxtaken(player)
+        box4.boxtaken()
     elif number == 5:
-        box5.boxtaken(player)
+        box5.boxtaken()
     elif number == 6:
-        box6.boxtaken(player)
+        box6.boxtaken()
     elif number == 7:
-        box7.boxtaken(player)
+        box7.boxtaken()
     elif number == 8:
-        box8.boxtaken(player)
+        box8.boxtaken()
     elif number == 9:
-        box9.boxtaken(player)
-
+        box9.boxtaken()
 
 
 def playerSwap():
@@ -76,8 +72,8 @@ def playerSwap():
     else:
         player = True
 
-player = True
 
+player = True
 gameOver = isGameOver()
 print("Hellow welcome to tic tac toe!\nhope det best wins")
 showBoard()
@@ -88,5 +84,6 @@ while gameOver == False:
     boxPicked(int(input("\nwhat box?")))
     showBoard()
     playerSwap()
+    gameOver = isGameOver()
 
 
